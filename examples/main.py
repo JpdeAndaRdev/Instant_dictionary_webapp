@@ -6,19 +6,32 @@ def home():
     div = jp.Div(a=wp, classes="bg-gray-200 h-screen")
 
     div1 = jp.Div(a=div, classes="grid grid-cols-3 gap-4 p-3")
-    jp.Input(a=div1, placeholder="Enter first value",
+    in_1 = jp.Input(a=div1, placeholder="Enter first value",
              classes="form-input")
-    jp.Input(a=div1, placeholder="Enter second value",
+    in_2 = jp.Input(a=div1, placeholder="Enter second value",
              classes="form-imput")
-    jp.Div(a=div, text="Results goes here...", classes="text-gray-600")
+    d_output = jp.Div(a=div, text="Results goes here...", classes="text-gray-600")
     jp.Div(a=div1, text="Just another div...", classes="text-gray-600")
     jp.Div(a=div1, text="Yet another div", classes="text-gray-600")
 
     div2= jp.Div(a=div, classes="grid grid-cols-2 gap-4")
-    jp.Button(a=div, text="Calculate",
+    jp.Button(a=div, text="Calculate", click=sum_up, in1=in_1, in2=in_2,
+              d = d_output,
               classes="border border-blue-600 m-2 py-1 px-4 rounded "
               "text-blue-600 hover:bg-red-500 hover:text-white")
-    jp.Div(a=div2, text="I am a cool interactive div!")
+    jp.Div(a=div2, text="I am a cool interactive div!", mouseenter=mouse_enter,
+           mouseleave=mouse_leave,
+           classes="hover:bg-red-500")
     return wp
+
+def sum_up(widget, msg):
+    sum = float(widget.in1.value) + float(widget.in2.value)
+    widget.d.text = sum
+
+def mouse_enter(widget, msg):
+    widget.text="Mouse enter the house!"
+
+def mouse_leave(widget, msg):
+    widget.text="Mouse left!"
 
 jp.justpy()
