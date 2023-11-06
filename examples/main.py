@@ -24,6 +24,10 @@ def home():
            classes="hover:bg-red-500")
     return wp
 
+@jp.setRoute('/about')  
+def about():
+    wp = jp.webPage()
+ 
 def sum_up(widget, msg):
     sum = float(widget.in1.value) + float(widget.in2.value)
     widget.d.text = sum
