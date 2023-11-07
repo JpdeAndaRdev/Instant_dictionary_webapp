@@ -9,5 +9,5 @@ class Definition:
         df = pd.read_csv('data.csv')
         return tuple(df.loc[df['word'] == self.term]['definition'])
     
-d = Definition(term='weapon')
-print(d.get())
+# d = Definition(term=' ')
+# print(d.get())
